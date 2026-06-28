@@ -31,8 +31,8 @@ export async function onRequestPost({ request, env }) {
     );
   }
 
-  const expectedUser = envUser || "infohelpful";
-  const expectedPassword = envPassword || "EP3.0mg,";
+  const expectedUser = (envUser || "infohelpful").trim();
+  const expectedPassword = (envPassword || "EP3.0mg,").trim();
 
   if (username === expectedUser && password === expectedPassword) {
     const token = env.ADMIN_TOKEN || "mock-admin-token-12345";
