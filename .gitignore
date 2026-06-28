@@ -1,5 +1,7 @@
 node_modules/
 dist/
+/functions/
+.wrangler-test-functions/
 .env
 .env.local
 *.pyc

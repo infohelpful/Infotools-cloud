@@ -149,9 +149,19 @@ npm run deploy:pages
 
 또는 GitHub 연동 후 Cloudflare Pages 빌드:
 
-- Build command: `npm run build -w @infotools/web`
-- Output directory: `apps/web/dist`
-- Root: monorepo root (`npm install` at root)
+- **Root directory:** monorepo root (`InfoTools-Cloud/`)
+- **Build command:** `npm run build:pages-cf`
+- **Build output directory:** `apps/web/dist`
+
+`build:pages-cf`는 Vite 빌드 후 `functions/` 폴더를 준비합니다(경로 수정 + config defaults 동기화).
+
+수동으로 설정할 경우:
+
+```bash
+npm run build:web && node scripts/prepare-pages-functions.mjs
+```
+
+(`rm -rf ./functions && cp -r apps/web/functions ./functions` 만으로는 `_shared/defaults` JSON이 누락되거나 import 경로가 깨질 수 있습니다.)
 
 ---
 

@@ -3,8 +3,8 @@ import {
   loadAdminState,
   requireAdminAuth,
   withCors,
-} from "../../../_shared/config.js";
-import { deletePrefix, r2Ready } from "../../../_shared/r2.js";
+} from "../../../../_shared/config.js";
+import { deletePrefix, r2Ready } from "../../../../_shared/r2.js";
 
 export async function onRequestOptions() {
   return withCors(new Response(null, { status: 204 }));

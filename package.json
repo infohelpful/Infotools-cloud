@@ -19,6 +19,8 @@
     "scaffold": "node scripts/scaffold-service.mjs",
     "smoke": "node scripts/smoke.mjs",
     "build:web": "npm run build -w @infotools/web",
+    "build:pages-cf": "npm run build:web && node scripts/prepare-pages-functions.mjs",
+    "sync:functions-defaults": "node scripts/prepare-pages-functions.mjs",
     "dev:pages": "npm run build:web && npm run pages:dev -w @infotools/web",
     "deploy:pages": "npm run pages:deploy -w @infotools/web",
     "docker:vocal-remover": "docker build -f services/vocal-remover/Dockerfile -t infotools/vocal-remover:latest .",

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "defaultRewardedAdUnit": "/22639388115/rewarded_web_example",
+  "services": [
+    {
+      "id": "vocal-remover",
+      "name": "Vocal Remover",
+      "nameKo": "보컬 분리",
+      "description": "오디오에서 MR과 보컬을 분리합니다.",
+      "enabled": true,
+      "adminOnly": false,
+      "sitePath": "/sites/vocal-remover/",
+      "manifestPath": "services/vocal-remover/service.manifest.json",
+      "rewardedAdUnit": "",
+      "icon": "🎙️",
+      "badge": "AI",
+      "tags": "보컬 분리 · MR/보컬 추출",
+      "adsenseClientId": "",
+      "adsenseTopSlot": "",
+      "adsenseBottomSlot": ""
+    }
+  ]
+}

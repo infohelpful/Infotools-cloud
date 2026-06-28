@@ -1,10 +1,7 @@
-import localMock from "../../../../config/environments/local.mock.json";
-
-import stagingExample from "../../../../config/environments/staging.example.json";
-
-import productionExample from "../../../../config/environments/production.example.json";
-
-import registryModule from "../../../../config/services.registry.json";
+import localMock from "./defaults/local.mock.json";
+import stagingExample from "./defaults/staging.example.json";
+import productionExample from "./defaults/production.example.json";
+import registryModule from "./defaults/services.registry.json";
 
 import { decryptAdminSecrets, encryptAdminSecrets } from "./crypto.js";
 

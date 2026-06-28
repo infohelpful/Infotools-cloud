@@ -1,5 +1,5 @@
-import { proxyRunpod } from "../../../../_shared/runpod.js";
-import { loadAdminState, withCors } from "../../../../_shared/config.js";
+import { proxyRunpod } from "../../../_shared/runpod.js";
+import { loadAdminState, withCors } from "../../../_shared/config.js";
 
 export async function onRequestOptions() {
   return withCors(new Response(null, { status: 204 }));
