@@ -677,7 +677,7 @@ body.is-drag-over .drop-overlay {
 /* 탭 패널 기본 처리 */
 .tab-pane {
   display: none;
-  min-height: 680px; /* 음원 분리 패널과 높이를 맞춰 하단 광고 위치 급격한 이동(CLS) 방지 */
+  min-height: 847px; /* 음원 분리 탭의 최종 높이(다운로드 버튼까지)인 847px과 완벽히 일치시킴 */
 }
 
 .tab-pane.active {
