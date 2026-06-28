@@ -677,10 +677,16 @@ body.is-drag-over .drop-overlay {
 /* 탭 패널 기본 처리 */
 .tab-pane {
   display: none;
+  min-height: 680px; /* 음원 분리 패널과 높이를 맞춰 하단 광고 위치 급격한 이동(CLS) 방지 */
 }
 
 .tab-pane.active {
   display: block;
+}
+
+#tab-pane-history.active {
+  display: flex;
+  flex-direction: column;
 }
 
 /* 작업 내역 디자인 */
@@ -690,6 +696,7 @@ body.is-drag-over .drop-overlay {
   border-radius: var(--radius);
   padding: 24px;
   min-height: 250px;
+  flex: 1; /* 탭 높이에 맞게 역사 카드 자동 확장 */
 }
 
 .history-header {
