@@ -180,6 +180,7 @@ body {
   margin: 2.5rem 0;
   min-height: 100px;
   border: 1px dashed var(--border);
+  width: 100%;
 }
 
 .ad-banner p {

@@ -49,7 +49,7 @@ export function injectAdSense(config, serviceId = null) {
     if (clientId && topSlot) {
       topAdContainer.innerHTML = `
         <ins class="adsbygoogle"
-             style="display:block"
+             style="display:block;width:100%"
              data-ad-client="${clientId}"
              data-ad-slot="${topSlot}"
              data-ad-format="auto"
@@ -71,7 +71,7 @@ export function injectAdSense(config, serviceId = null) {
     if (clientId && bottomSlot) {
       bottomAdContainer.innerHTML = `
         <ins class="adsbygoogle"
-             style="display:block"
+             style="display:block;width:100%"
              data-ad-client="${clientId}"
              data-ad-slot="${bottomSlot}"
              data-ad-format="auto"
