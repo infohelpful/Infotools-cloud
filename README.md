@@ -17,6 +17,7 @@ copy .env.example .env
 npm run dev
 ```
 
+
 | 명령 | 설명 |
 |------|------|
 | `npm run setup` | Python 3.12 venv 생성·패키지 설치 (표준) |
