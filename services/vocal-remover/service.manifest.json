@@ -1,0 +1,23 @@
+{
+  "id": "vocal-remover",
+  "name": "Vocal Remover",
+  "version": "1.0.0",
+  "description": "Demucs-based vocal / instrumental separation",
+  "inputs": {
+    "audioKey": "string",
+    "format": "wav|mp3|flac",
+    "device": "auto|cpu|cuda"
+  },
+  "outputs": {
+    "instrumentalKey": "string",
+    "vocalsKey": "string",
+    "durationSec": "number"
+  },
+  "storage": {
+    "prefix": "vocal-remover/"
+  },
+  "runpod": {
+    "handler": "src/handler.py",
+    "gpu": "NVIDIA RTX 4090"
+  }
+}

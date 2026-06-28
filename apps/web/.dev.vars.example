@@ -1,0 +1,21 @@
+# Copy to apps/web/.dev.vars for `wrangler pages dev` (never commit .dev.vars)
+
+INFOTOOLS_ACTIVE_ENV=production
+
+# --- Admin (운영과 동일하게 설정 권장) ---
+ADMIN_TOKEN=dev-admin-token-change-me
+ADMIN_USERNAME=infohelpful
+ADMIN_PASSWORD=change-me
+
+# --- Optional fallback (관리자 UI에서 설정하면 KV가 우선) ---
+R2_ACCOUNT_ID=
+R2_ACCESS_KEY_ID=
+R2_SECRET_ACCESS_KEY=
+R2_BUCKET=
+R2_PUBLIC_BASE_URL=https://YOUR_R2_PUBLIC_DOMAIN
+
+RUNPOD_API_KEY=
+RUNPOD_VOCAL_REMOVER_ENDPOINT=https://api.runpod.ai/v2/YOUR_ENDPOINT_ID
+# RUNPOD_ENDPOINTS_JSON={"vocal-remover":"https://api.runpod.ai/v2/YOUR_ENDPOINT_ID"}
+
+# Local Pages dev: wrangler.toml 의 ADMIN_KV 바인딩(preview_id)도 함께 설정하세요.

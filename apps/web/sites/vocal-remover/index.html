@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vocal Remover — InfoTools Cloud</title>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+  </head>
+  <body>
+    <div class="drop-overlay" id="drop-overlay" aria-hidden="true">
+      <p>오디오 파일을 여기에 놓으세요</p>
+    </div>
+
+    <div class="app-container">
+      <main class="main-content">
+        <header class="app-header">
+          <div class="logo-area">
+            <span class="badge">AI Powered</span>
+            <div class="logo-title-row">
+              <h1>Vocal <span class="accent">Remover</span></h1>
+              <a href="/" class="btn-to-dashboard">대시보드로 이동</a>
+              <div class="ai-banner warn" id="ai-banner" hidden></div>
+            </div>
+            <p class="header-tagline">오디오에서 MR과 보컬을 분리해 미리듣기·다운로드합니다.</p>
+          </div>
+        </header>
+
+        <div class="ad-banner top-banner" id="top-ad-container"></div>
+
+        <!-- 탭 네비게이션 -->
+        <div class="tabs-container">
+          <button type="button" class="tab-btn active" data-tab="separation">
+            <span class="tab-icon">🎚️</span> 음원 분리
+          </button>
+          <button type="button" class="tab-btn" data-tab="history">
+            <span class="tab-icon">📂</span> 작업 내역
+          </button>
+        </div>
+
+        <!-- 탭 1: 음원 분리 화면 -->
+        <div id="tab-pane-separation" class="tab-pane active">
+          <div class="vocal-editor-shell" id="vocal-editor-shell">
+            <section class="drop-zone">
+              <p class="drop-hint">화면 어디에나 오디오 파일을 드래그 앤 드롭할 수 있습니다.</p>
+              <div class="path-input-group">
+                <label for="audio-path">오디오 파일 경로</label>
+                <div class="path-row">
+                  <input
+                    type="text"
+                    id="audio-path"
+                    readonly
+                    autocomplete="off"
+                    spellcheck="false"
+                    placeholder="파일 경로"
+                  />
+                  <button type="button" id="btn-pick-file" class="btn-pick-file">찾아보기</button>
+                </div>
+                <input type="file" id="file-input" accept="audio/*" hidden />
+              </div>
+            </section>
+
+            <div class="media-workspace">
+              <section class="options-layout">
+                <div class="option-card option-card-single">
+                  <label for="format">출력 포맷 (MR 다운로드)</label>
+                  <select id="format" class="option-select">
+                    <option value="wav">WAV</option>
+                    <option value="mp3">MP3</option>
+                    <option value="flac">FLAC</option>
+                  </select>
+                </div>
+              </section>
+            </div>
+
+            <section class="dual-waveform-section" id="dual-waveform-section" aria-label="오디오 파형 및 미리듣기">
+              <div class="dual-waveform-stack" id="dual-waveform-stack">
+                <div class="playhead" id="playhead" aria-hidden="true">
+                  <span class="playhead-time" id="playhead-time">0:00.0</span>
+                </div>
+                <div class="stem-track stem-track-music">
+                  <div class="stem-side">
+                    <span class="stem-label">음악</span>
+                    <input
+                      type="range"
+                      class="vol-slider"
+                      id="vol-music"
+                      min="0"
+                      max="100"
+                      value="100"
+                      aria-label="음악 볼륨"
+                    />
+                  </div>
+                  <div class="stem-wave-column">
+                    <span class="stem-file" id="music-file-label">MR (분리 대기)</span>
+                    <canvas id="wave-music" class="stem-canvas" height="132" aria-label="MR 파형"></canvas>
+                  </div>
+                </div>
+                <div class="stem-track stem-track-vocal">
+                  <div class="stem-side">
+                    <span class="stem-label">보컬</span>
+                    <input
+                      type="range"
+                      class="vol-slider"
+                      id="vol-vocal"
+                      min="0"
+                      max="100"
+                      value="0"
+                      aria-label="보컬 볼륨"
+                    />
+                  </div>
+                  <div class="stem-wave-column">
+                    <span class="stem-file" id="vocal-file-label">보컬 (분리 대기)</span>
+                    <canvas id="wave-vocal" class="stem-canvas" height="132" aria-label="보컬 파형"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="transport-bar">
+                <button type="button" id="btn-play-pause" class="btn-transport" title="재생/일시정지" disabled>
+                  ▶
+                </button>
+                <span id="time-current" class="transport-time">0:00.0</span>
+                <span class="transport-sep">/</span>
+                <span id="time-total" class="transport-time">0:00.0</span>
+                <span class="transport-hint">파형 클릭으로 이동 · 보컬 볼륨 0이면 MR만 재생</span>
+              </div>
+
+              <div class="vocal-task-loading" id="separation-loading" hidden aria-hidden="true">
+                <div class="vocal-task-loading__inner" role="status" aria-live="polite" aria-busy="true">
+                  <div class="vocal-task-loading__spinner" aria-hidden="true"></div>
+                  <p class="vocal-task-loading__title">보컬·MR 분리</p>
+                  <p class="vocal-task-loading__step" id="separation-loading-step">준비 중…</p>
+                  <div
+                    class="vocal-task-loading__track"
+                    id="separation-loading-track"
+                    role="progressbar"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                  >
+                    <div class="vocal-task-loading__bar" id="separation-loading-bar"></div>
+                  </div>
+                  <p class="vocal-task-loading__percent" id="separation-loading-percent">0%</p>
+                  <p class="vocal-task-loading__message" id="separation-loading-message">
+                    MR·보컬 스템을 생성하고 있습니다.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="action-center">
+            <button type="button" id="btn-analyze" class="btn-main" disabled>
+              무료 분석하기 ( 30초 광고 시청 )
+            </button>
+            <div class="export-row">
+              <a href="#" id="btn-dl-zip" class="btn-export btn-export-zip disabled" role="button" aria-disabled="true">
+                <span class="icon" aria-hidden="true">📥</span> 보컬 / 음악 다운로드
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 탭 2: 작업 내역 화면 -->
+        <div id="tab-pane-history" class="tab-pane">
+          <div class="history-list-card">
+            <div class="history-header">
+              <span>최근 음원 분리 내역</span>
+              <button type="button" id="btn-clear-history" class="btn-clear-history">전체 삭제</button>
+            </div>
+            <div id="history-items-container" class="history-items-container">
+              <!-- JS에서 내역 렌더링 -->
+            </div>
+          </div>
+        </div>
+        <div class="ad-banner bottom-banner" id="bottom-ad-container"></div>
+      </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "serviceId": "vocal-remover",
+  "title": "Vocal Remover",
+  "uploadPrefix": "vocal-remover/input",
+  "formats": ["wav", "mp3", "flac"],
+  "defaultFormat": "wav",
+  "devices": [
+    { "value": "auto", "label": "자동 (권장)" },
+    { "value": "cuda", "label": "CUDA (GPU)" },
+    { "value": "cpu", "label": "CPU" }
+  ]
+}

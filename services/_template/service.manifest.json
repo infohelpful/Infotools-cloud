@@ -1,0 +1,10 @@
+{
+  "id": "__SERVICE_ID__",
+  "name": "__SERVICE_NAME__",
+  "version": "0.1.0",
+  "description": "TODO",
+  "inputs": {},
+  "outputs": {},
+  "storage": { "prefix": "__SERVICE_ID__/" },
+  "runpod": { "handler": "src/handler.py", "gpu": "NVIDIA RTX 4090" }
+}

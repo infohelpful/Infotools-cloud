@@ -1,0 +1,11 @@
+{
+  "name": "@infotools/rewarded-ads",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "InfoTools Cloud — GPT 보상형 광고 (전 사이트 공통)",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./gpt": "./src/gpt-engine.js"
+  }
+}

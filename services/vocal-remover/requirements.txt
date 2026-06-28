@@ -1,0 +1,10 @@
+demucs>=4.0.1
+diffq>=0.2.4
+soundfile>=0.12.1
+torch>=2.0.0
+torchaudio>=2.0.0
+boto3>=1.34.0
+runpod>=1.7.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9

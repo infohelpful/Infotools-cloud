@@ -1,0 +1,23 @@
+{
+  "name": "@infotools/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "pages:dev": "wrangler pages dev dist --port 5173",
+    "pages:dev:live": "npm run build && wrangler pages dev dist --port 5173",
+    "pages:deploy": "npm run build && wrangler pages deploy dist"
+  },
+  "dependencies": {
+    "@infotools/rewarded-ads": "0.1.0",
+    "@infotools/web-sdk": "0.1.0",
+    "aws4fetch": "^1.0.20"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0",
+    "wrangler": "^3.99.0"
+  }
+}

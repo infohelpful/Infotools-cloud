@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+.env.local
+*.pyc
+__pycache__/
+.venv/
+# legacy — npm run setup 로 .venv(3.12) 로 통합
+.venv-gpu/
+.venv.legacy-*/
+venv/
+data/
+.dev.vars
+config/environments/production.json
+config/environments/staging.json
+*.log
+.DS_Store

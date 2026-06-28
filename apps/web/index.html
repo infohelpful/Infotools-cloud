@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InfoTools Cloud</title>
+    <link rel="stylesheet" href="/assets/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="eyebrow">InfoTools Cloud</p>
+        <div class="hero-title-row">
+          <h1>AI 도구 대시보드</h1>
+          <p class="env-badge" id="env-badge">환경 확인 중…</p>
+        </div>
+        <p class="lead">차세대 인공지능 기술로 일상의 효율을 높이는 AI 도구 플랫폼</p>
+      </header>
+      <div class="ad-banner top-banner" id="top-ad-container"></div>
+      
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="AI 도구 검색 (예: 보컬 분리)..." spellcheck="false" />
+        <button type="button" id="search-btn">검색</button>
+      </div>
+
+      <main class="grid" id="tool-grid"></main>
+      
+      <div class="ad-banner bottom-banner" id="bottom-ad-container"></div>
+      <footer class="footer">
+        <span id="health-dot" class="health-dot">●</span>
+        <span id="health-text">API 확인 중…</span>
+      </footer>
+    </div>
+    <script type="module" src="/assets/dashboard.js"></script>
+  </body>
+</html>

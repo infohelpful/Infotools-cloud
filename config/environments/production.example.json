@@ -1,0 +1,18 @@
+{
+  "id": "production",
+  "label": "실제 운영 (Cloudflare R2 + RunPod)",
+  "apiBase": "",
+  "storage": {
+    "provider": "r2",
+    "mode": "presigned",
+    "bucket": "YOUR_BUCKET",
+    "publicBaseUrl": "https://YOUR_R2_PUBLIC_DOMAIN"
+  },
+  "inference": {
+    "provider": "runpod",
+    "mode": "edge-proxy",
+    "endpoints": {
+      "vocal-remover": "https://api.runpod.ai/v2/YOUR_ENDPOINT_ID"
+    }
+  }
+}

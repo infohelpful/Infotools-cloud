@@ -1,0 +1,10 @@
+{
+  "vocal-remover:22c7631853db95aa474dd743888bf15b68c6bc09c040eab086e01b43d4fc810b:wav": {
+    "jobId": "a0ae423b-96ca-47fc-bf70-16acd2401ce1",
+    "instrumentalKey": "vocal-remover/a0ae423b-96ca-47fc-bf70-16acd2401ce1/output/instrumental.wav",
+    "vocalsKey": "vocal-remover/a0ae423b-96ca-47fc-bf70-16acd2401ce1/output/vocals.wav",
+    "instrumentalUrl": "http://127.0.0.1:19427/api/storage/object/vocal-remover%2Fa0ae423b-96ca-47fc-bf70-16acd2401ce1%2Foutput%2Finstrumental.wav",
+    "vocalsUrl": "http://127.0.0.1:19427/api/storage/object/vocal-remover%2Fa0ae423b-96ca-47fc-bf70-16acd2401ce1%2Foutput%2Fvocals.wav",
+    "durationSec": 0.0
+  }
+}

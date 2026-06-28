@@ -1,0 +1,32 @@
+{
+  "name": "infotools-cloud",
+  "private": true,
+  "version": "0.1.0",
+  "description": "InfoTools Cloud — extensible AI SaaS (Vocal Remover pilot)",
+  "workspaces": [
+    "packages/*",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:mock": "node scripts/dev-mock.mjs",
+    "dev:stop": "node scripts/dev-stop.mjs",
+    "setup": "node scripts/setup-venv.mjs",
+    "setup:venv": "node scripts/setup-venv.mjs",
+    "setup:gpu": "node scripts/setup-venv.mjs",
+    "dev:infra": "node scripts/run-mock-infra.mjs",
+    "dev:web": "npm run dev -w @infotools/web",
+    "scaffold": "node scripts/scaffold-service.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "build:web": "npm run build -w @infotools/web",
+    "dev:pages": "npm run build:web && npm run pages:dev -w @infotools/web",
+    "deploy:pages": "npm run pages:deploy -w @infotools/web",
+    "docker:vocal-remover": "docker build -f services/vocal-remover/Dockerfile -t infotools/vocal-remover:latest .",
+    "docker:vocal-remover:preload": "docker build -f services/vocal-remover/Dockerfile --build-arg PRELOAD_DEMUCS_MODEL=1 -t infotools/vocal-remover:latest .",
+    "docker:run:vocal-remover": "node scripts/docker-run-vocal-remover.mjs",
+    "docker:test:vocal-remover": "node scripts/docker-test-vocal-remover.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

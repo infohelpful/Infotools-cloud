@@ -1,0 +1,29 @@
+name = "infotools-web"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "dist"
+
+[vars]
+INFOTOOLS_ACTIVE_ENV = "production"
+
+# --- 운영 필수 시크릿 (wrangler secret put) ---
+# ADMIN_TOKEN          — 관리자 API Bearer 토큰 (운영 필수)
+# ADMIN_USERNAME       — 관리자 로그인 ID (운영 필수)
+# ADMIN_PASSWORD       — 관리자 로그인 비밀번호 (운영 필수)
+#
+# --- 선택 fallback (관리자 UI/KV 설정 전까지 또는 비상용) ---
+# R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET, R2_PUBLIC_BASE_URL
+# RUNPOD_API_KEY, RUNPOD_VOCAL_REMOVER_ENDPOINT
+
+# --- Admin state persistence (운영 필수) ---
+# 1) npx wrangler kv namespace create INFOTOOLS_ADMIN
+# 2) npx wrangler kv namespace create INFOTOOLS_ADMIN --preview
+# 3) 아래 id / preview_id 를 생성된 값으로 교체 후 주석 해제
+[[kv_namespaces]]
+binding = "ADMIN_KV"
+id = "9b4fa17144d846bfb56cbd5d99e6703a"
+preview_id = "1d86732f50c44a44ad6c75089c082f7f"
+
+# Optional R2 binding for direct bucket access (alternative to S3 API keys):
+# [[r2_buckets]]
+# binding = "R2"
+# bucket_name = "infotools"

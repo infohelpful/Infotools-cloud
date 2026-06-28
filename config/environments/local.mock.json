@@ -1,0 +1,15 @@
+{
+  "id": "local-mock",
+  "label": "로컬 Mock (개발)",
+  "apiBase": "http://127.0.0.1:19427",
+  "storage": {
+    "provider": "mock",
+    "mode": "multipart",
+    "baseUrl": "http://127.0.0.1:19427"
+  },
+  "inference": {
+    "provider": "mock-runpod",
+    "mode": "direct",
+    "baseUrl": "http://127.0.0.1:19427"
+  }
+}
